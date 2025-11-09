@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+<head>
+    
+<style>
+    /* Hamburger menu styling */
+    .hamburger-menu {
+        display: none;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 20px;
+    }
+
+    /* Mobile navigation links */
+    .mobile-nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333;
+        width: 100%;
+        padding-top: 50px;
+    }
+
+    .mobile-nav a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Show the hamburger icon on mobile */
+    @media only screen and (max-width: 768px) {
+        .hamburger-menu {
+            display: block;
+        }
+
+        .mobile-nav a {
+            border-top: 1px solid #fff;
+        }
+    }
+</style>
+
+    
+<style>
+    /* Mobile responsiveness */
+    @media only screen and (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+        
+        .game-devs-box {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .game-devs-box-inner {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .game-devs-image {
+            width: 80%; /* Adjust image size for mobile */
+            height: auto;
+        }
+        
+        .game-devs-text {
+            font-size: 18px; /* Adjust text size for readability */
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        /* Navbar adjustments */
+        .navbar {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .navbar a {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    }
+    
+    /* Tablet responsiveness (max-width: 1024px) */
+    @media only screen and (max-width: 1024px) {
+        .game-devs-box {
+            width: 48%; /* Two boxes per row for tablets */
+            margin-bottom: 20px;
+        }
+        
+        .navbar {
+            font-size: 18px;
+        }
+    }
+</style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PW Studios</title>
+  <meta name="description" content="Official website for PW Studios.">
+  <meta name="theme-color" content="#FFCF07">
+  <style>
+    :root{
+      --bg:#FFCF07;
+      --card-light:#ffffff;
+      --card-dark:#1e293b;
+      --text-light:#0f172a;
+      --text-dark:#f8fafc;
+      --border-light:#d4ae06;
+      --border-dark:#b89305;
+      --accent:#0f172a;
+      --radius:12px;
+      --ff-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    
+
+    
+
+    .container{max-width:1100px;margin:0 auto;padding:1.5rem}
+
+    header {
+  font-size: 1.4rem;position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(8px);border-radius:var(--radius);margin-top:0.5rem;transition:all 0.3s;}
+    body.dark header {
+  font-size: 1.4rem;background:rgba(30,41,59,0.9);border-color:var(--border-dark);}
+
+    .nav {
+  font-size: 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.4rem 0.8rem;}
+    .brand img{height:120px;width:auto;display:block;border-radius:var(--radius);}
+
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav a{color:inherit;text-decoration:none;font-weight:600}
+
+    .btn{padding:.5rem .9rem;border-radius:var(--radius);background:var(--accent);color:#FFCF07;font-weight:700;cursor:pointer;transition:opacity 0.2s;}
+    .btn:hover{opacity:0.85}
+
+    .hero{display:grid;grid-template-columns:1fr;gap:1.25rem;align-items:center;padding:2rem 0;border-radius:var(--radius);}
+
+    h1{font-size:clamp(1.6rem,3vw,2.6rem);margin:0 0 .4rem}
+    p.lead{margin:0;}
+
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+
+    .card{background:var(--card-light);padding:1rem;border-radius:var(--radius);box-shadow: 0 4px 12px rgba(0,0,0,0.12);transition:all 0.3s;}
+    body.dark .card{background:var(--card-dark);border-color:var(--border-dark);box-shadow: 0 4px 12px rgba(0,0,0,0.12);}
+
+    input,textarea{width:100%;padding:.5rem;margin-bottom:.5rem;border-radius:var(--radius);background:var(--card-light);color:var(--text-light);transition:all 0.3s;}
+    body.dark input,body.dark textarea{background:var(--card-dark);color:var(--text-dark);border-color:var(--border-dark);}
+
+    footer{text-align:center;padding:1.5rem 0;font-size:.9rem;font-weight:600;border-top:4px solid var(--border-light);border-radius:var(--radius);transition:border-color 0.3s;}
+    body.dark footer{border-color:var(--border-dark);}
+
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}.brand img{height:120px;}}
+  
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(212, 174, 6, 0.25);
+      border-radius: var(--radius);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #b89305;
+      border-radius: var(--radius);
+      
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #a37f04;
+    }
+
+  
+    /* Hover animation for game image */
+    #games img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #games img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+  </style>
+
+  
+
+
+  <style>
+    nav a[href="#top"],
+    nav a[href="#gamedevs"] {
+      font-size: 2rem !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+    }
+  </style>
+
+
+  <style>
+    nav a[href="#top"],
+    nav a[href="#about"] {
+      font-size: 2rem !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+    }
+  </style>
+
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+
+
+<style>
+#gamedevs {
+  position: relative;
+  background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+  background-size: 400% 400%;
+  animation: sectionWave 15s ease infinite;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #FFCF07, #ffe773, #FFCF07) 1;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background-color: transparent !important;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+
+<style>
+#gamedevs {
+  position: relative;
+  background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+  background-size: 400% 400%;
+  animation: sectionWave 15s ease infinite;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #FFCF07, #ffe773, #FFCF07) 1;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background-color: transparent !important;
+}
+
+
+
+
+
+#gamedevs h2 {
+  color: #ffffff;
+  font-weight: 700;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.powerxedits-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(120deg, #00FF88, #00CC44, #00FF88);
+  background-size: 300% 300%;
+  animation: greenFlow 8s ease infinite;
+  padding: 10px 16px;
+  
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease;
+}
+
+.powerxedits-btn:hover {
+  transform: scale(1.05);
+}
+
+.powerxedits-btn img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+@keyframes outerFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes innerFlow {
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes greenFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+<style>
+
+#gamedevs {
+  position: relative;
+  background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+  background-size: 400% 400%;
+  animation: sectionWave 15s ease infinite;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #FFCF07, #ffe773, #FFCF07) 1;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background-color: transparent !important;
+}
+
+#gamedevs h2 {
+  color: #ffffff;
+  font-weight: 700;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.powerxedits-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(120deg, #00FF88, #00CC44, #00FF88);
+  background-size: 300% 300%;
+  animation: greenFlow 8s ease infinite;
+  padding: 10px 16px;
+  
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease;
+}
+.powerxedits-btn:hover { transform: scale(1.05); }
+.powerxedits-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 0;
+}
+@keyframes outerFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes innerFlow {
+  0% { background-position: 100% 50%; }
+  50% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@keyframes greenFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+<style>
+/* === Safe darker gold gradient stroke (single, non-invasive insertion) === */
+.header-with-stroke, header { border-radius: 12px; }
+header {
+  border: 4px solid transparent;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+    linear-gradient(270deg, #E6B800, #FF9E00, #CC7A00);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Games card and Game Devs - thinner stroke */
+#games > .card, #gamedevs {
+  border: 2px solid transparent !important;
+  background-image:
+    linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07),
+    linear-gradient(270deg, #E6B800, #FF9E00, #CC7A00);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  border-radius: 12px;
+}
+</style>
+
+
+<style>
+
+
+
+<style>
+
+
+
+<style>
+
+
+
+<style>
+/* === PW Logo Size Adjustment (Header Only, +40% with Top Padding) === */
+header img[src*="banner_assets_1.png"] {
+  width: 140% !important;
+  max-width: 140% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+  padding-top: 20px !important;
+  padding-bottom: 10px !important;
+}
+</style>
+
+
+<style>
+/* === PW Logo in Box (25% Larger) === */
+section img[src*="banner_assets_1.png"]:not(header img):not(.loading-screen img) {
+  width: 125% !important;
+  max-width: 125% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
+
+<style>
+
+
+
+<style>
+/* Ensure Roblox Group matches Games/Game Devs nav styling */
+nav a.bignav, nav a[href="#games"], nav a[href="#gamedevs"] {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+  color: #0d1321 !important;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+nav a.bignav:hover, nav a[href="#games"]:hover, nav a[href="#gamedevs"]:hover {
+  color: #ffcc00 !important;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+</style>
+
+
+<style>
+/* === Top Navigation Consistency Fix === */
+nav ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #0d1321;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 1rem;
+}
+
+nav a:hover {
+  color: #ffcc00;
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+</style>
+
+
+<style>
+/* === Roblox Group Emphasis === */
+nav a[href*="roblox.com"] {
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+</style>
+
+
+<style>
+/* === Clickable Roblox Group Text === */
+#roblox-group h2 a:hover {
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+</style>
+
+
+<style>
+#roblox-group, #games, #gamedevs {
+  scroll-margin-top: 80px;
+}
+</style>
+
+
+<style>
+#roblox-group, #games, #gamedevs {
+  scroll-margin-top: 160px;
+}
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
+</head>
+<body id="top">
+
+  <style>
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+      background-size: 400% 400%;
+      animation: bgMove 6s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #loading-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    #loading-logo {
+      width: 400px;
+      height: auto;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.75; }
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+
+  <div id="loading-screen">
+    <img id="loading-logo" src="banner_assets_1.png" alt="PW Studios Logo">
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+      }, 5000); // Fade out after 5 seconds
+    });
+  </script>
+  
+  
+  <header class="container">
+    <div class="nav">
+      <div class="brand">
+        <img src="banner_assets_1.png" alt="PW Studios Logo">
+      </div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#games" class="nav-link">Games</a></li>
+          <li><a href="#roblox-group" class="nav-link">Roblox Group</a></li>
+          <li><a href="#gamedevs" class="nav-link">Game Devs</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="btn" onclick="toggleMode()" id="modeToggle">Dark</button>
+      </div>
+    </div>
+  </header>
+
+
+
+  <main class="container">
+    <section class="hero">
+      <div class="grid-2">
+        <div>
+          <h1 style="text-align:center;margin-top:0.5rem;">Welcome to PW Studios</h1>
+          <p class="lead"></p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    
+
+    
+    
+
+    
+    
+    <section id="roblox-group" class="section">
+  <div class="card" style="border: 2px solid transparent; background-image:
+    linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07),
+    linear-gradient(270deg, #E6B800, #FF9E00, #CC7A00);
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 12px; padding: 2rem; margin-top: 2rem; text-align: center;">
+    <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Roblox Group</h2>
+    <p style="color: white; font-size: 1.1rem; margin-bottom: 1.5rem;">
+      Join our official Roblox group to connect with the community, get updates, and more!
+    </p>
+    <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank"
+       style="display: inline-block; background: linear-gradient(90deg, #E6B800, #FF9E00, #CC7A00);
+       color: #000; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;">
+       Visit Roblox Group
+    </a>
+  </div>
+</section>
+<section id="games" class="section">
+      <div class="card" style="padding:0;background:none;box-shadow: 0 4px 12px rgba(0,0,0,0.12); max-width:80%;margin:auto;">
+        <h2 style="font-size:2rem;">Games</h2>
+        <a href="https://www.roblox.com/games/5751820049/KILL-N-SEEK" target="_blank" style="display:inline-block;width:80%;margin:auto;">
+          <img src="New_Project_-_2025-08-05T180909.341.png" alt="KILL N SEEK Game" style="width:100%;height:auto;border-radius:var(--radius);display:block;">
+        </a>
+      </div>
+    </section>
+
+<section id="gamedevs" class="section">
+  <h2>Game Devs</h2>
+  <div id="gamedevs-content">
+    <a href="https://www.roblox.com/users/1917839326/profile" target="_blank" class="powerxedits-btn">
+      <img id="robloxAvatar" src="data:image/webp;base64,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" alt="Roblox Avatar">
+      PowerXEdits
+    </a>
+  </div>
+</section>
+
+
+
+
+
+    
+  
+    
+    
+    
+
+
+
+  
+    
+
+</main>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+  <script>
+    function scrollToContact(){document.querySelector('#contact').scrollIntoView({behavior:'smooth'});}
+    function validateEmail(email){return /S+@S+.S+/.test(email);}
+    function handleSubmit(e){
+      e.preventDefault();
+      const name=document.getElementById('name');
+      const email=document.getElementById('email');
+      const msg=document.getElementById('message');
+      const status=document.getElementById('formStatus');
+      if(!name.value.trim()){status.textContent='Please enter your name.';return;}
+      if(!validateEmail(email.value)){status.textContent='Invalid email address.';return;}
+      if(!msg.value.trim()){status.textContent='Message cannot be empty.';return;}
+      status.textContent='Message ready to send (demo).';
+      setTimeout(()=>status.textContent='',3000);
+      document.getElementById('contactForm').reset();
+    }
+
+    function toggleMode(){
+      document.body.classList.toggle('dark');
+      const toggle = document.getElementById('modeToggle');
+      if(document.body.classList.contains('dark')){
+        toggle.textContent = 'Dark';
+      } else {
+        toggle.textContent = 'Light';
+      }
+    }
+  </script>
+
+  <audio id="hoverSound" src="click-21156.mp3" preload="auto"></audio>
+  <script>
+    const gameImage = document.querySelector('#games img');
+    const hoverSound = document.getElementById('hoverSound');
+    if (gameImage && hoverSound) {
+      gameImage.addEventListener('mouseenter', () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(()=>{});
+      });
+    }
+  </script>
+
+<script>
+  async function loadRobloxAvatar() {
+    const img = document.getElementById("robloxAvatar");
+    try {
+      const res = await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=1664398749&size=420x420&format=Png&isCircular=false");
+      const data = await res.json();
+      if (data && data.data && data.data[0] && data.data[0].imageUrl) {
+        img.src = data.data[0].imageUrl;
+      }
+    } catch (err) {
+      console.error("Avatar fetch failed:", err);
+    }
+  }
+  loadRobloxAvatar();
+</script>
+
+
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+<!-- Unified gold gradient (reused by all icons) -->
+<svg width="0" height="0" style="position:absolute;left:-9999px;visibility:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="pwGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F7D23E"/>
+      <stop offset="50%" stop-color="#F1B71C"/>
+      <stop offset="100%" stop-color="#F6C23E"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<style>
+  .footer-icons{display:flex;justify-content:center;align-items:center;gap:3.25rem;padding:2.25rem 0 3.25rem;}
+  .footer-icons svg{width:56px;height:56px;display:block;filter:none;transition:filter .25s ease, transform .2s ease;}
+  .footer-icons svg:hover{filter:drop-shadow(0 0 10px rgba(241,183,28,.8));transform:translateY(-1px);}
+</style>
+
+
+    
+    
+    
+    
+    <footer>
+      <div style="text-align:center; padding:2rem 0;">
+        <p>© PW Studios • All rights reserved</p>
+      </div>
+      <div class="footer-icons" style="display: flex; justify-content: center; align-items: center; gap: 1rem; padding: 1rem;">
+        <!-- Roblox Icon -->
+      <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank">
+        <!-- Roblox Icon (Linked) -->
+      <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank">
+        <!-- Roblox Icon (Linked) -->
+      <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank">
+        
+      </a>
+      </a>
+      </a>
+        <!-- Roblox Icon (Linked) -->
+      <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank">
+        <!-- Roblox Icon (Linked) -->
+      <a href="https://www.roblox.com/communities/16140225/Powerstudiosofficial#!/about" target="_blank">
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-label="Roblox">
+          <defs>
+            <mask id="rbxHole">
+              <rect width="256" height="256" fill="black"/>
+              <g transform="rotate(18 128 128)">
+                <rect x="48" y="48" width="160" height="160" rx="16" fill="white"/>
+                <rect x="108" y="108" width="40" height="40" rx="6" fill="black"/>
+              </g>
+            </mask>
+          </defs>
+          <rect width="256" height="256" fill="url(#pwGold)" mask="url(#rbxHole)"/>
+        </svg>
+      </a>
+      </a>
+
+        <!-- Discord Icon -->
+      <a href="https://discord.gg/KMaWhj6NtB" target="_blank">
+        <!-- Discord Icon (Linked) -->
+      <a href="https://discord.gg/KMaWhj6NtB" target="_blank">
+        <!-- Discord Icon (Linked) -->
+      <a href="https://discord.gg/KMaWhj6NtB" target="_blank">
+        
+      </a>
+      </a>
+      </a>
+        <!-- Discord Icon (Linked) -->
+      <a href="https://discord.gg/KMaWhj6NtB" target="_blank">
+        <!-- Discord Icon (Linked) -->
+      <a href="https://discord.gg/KMaWhj6NtB" target="_blank">
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-label="Discord">
+          <path fill="url(#pwGold)" d="M216 52c-25-12-51-13-51-13l-3 6c-28-4-55 0-71 7-13 6-21 13-21 13s-22 40-22 90c0 0 13 22 48 28 0 0 6-8 11-15-21-6-29-18-29-18s2 1 6 3c1 1 2 1 3 2 9 5 18 8 26 10 13 3 24 4 34 3 11 0 21-2 29-4 6-1 12-3 18-6 3-1 6-3 9-4 0 0-9 13-30 19 5 7 11 15 11 15 35-6 48-28 48-28 0-50-22-90-22-90s-8-7-22-13zM111 128c-7 0-12-6-12-13 0-8 5-14 12-14s12 6 12 14c0 7-5 13-12 13zm60 0c-7 0-12-6-12-13 0-8 5-14 12-14s12 6 12 14c0 7-5 13-12 13z"/>
+        </svg>
+      </a>
+      </a>
+
+        <!-- YouTube Icon -->
+      <a href="https://www.youtube.com/@PowerstudiosofficiaI" target="_blank">
+        <!-- YouTube Icon (Linked) -->
+      <a href="https://www.youtube.com/@PowerstudiosofficiaI" target="_blank">
+        <!-- YouTube Icon (Linked) -->
+      <a href="https://www.youtube.com/@PowerstudiosofficiaI" target="_blank">
+        
+      </a>
+      </a>
+      </a>
+        <!-- YouTube Icon (Linked) -->
+      <a href="https://www.youtube.com/@PowerstudiosofficiaI" target="_blank">
+        <!-- YouTube Icon (Linked) -->
+      <a href="https://www.youtube.com/@PowerstudiosofficiaI" target="_blank">
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-label="YouTube">
+          <rect x="24" y="68" width="208" height="120" rx="24" fill="url(#pwGold)"/>
+          <polygon points="116,100 116,156 166,128" fill="#fff" opacity=".9"/>
+        </svg>
+      </a>
+      </a>
+      </div>
+    </footer>
+    
+    
+    
+    
+
+
+</body>
+</html>
+<style>
+
+body {
+  font-family: var(--ff-sans);
+  margin: 0;
+  background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+  background-size: 400% 400%;
+  color: var(--text-light);
+  line-height: 1.5;
+  transition: all 0.3s;
+  animation: diagonalWave 12s ease infinite;
+}
+body.dark {
+  color: var(--text-dark);
+  background: linear-gradient(270deg, #FFCF07, #ffe773, #FFCF07);
+  background-size: 400% 400%;
+  animation: diagonalWave 12s ease infinite;
+}
+
+
+@keyframes diagonalWave {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+</style>
+
+<style>
+#gamedevs-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  text-align: left;
+  background: transparent !important;
+}
+</style>
